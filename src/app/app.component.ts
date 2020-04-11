@@ -1,6 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { ITodo } from "./interfaces/itodo";
-import { TodoService } from "./services/todo.service";
 
 @Component({
   selector: "app-root",
@@ -10,5 +8,5 @@ import { TodoService } from "./services/todo.service";
 export class AppComponent {
   ngOnInit() {}
 
-  constructor(private todoService: TodoService) {}
+  constructor() {}
 }

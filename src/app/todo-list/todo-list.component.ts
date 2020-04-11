@@ -8,8 +8,8 @@ import { ITodo } from "../interfaces/itodo";
   styleUrls: ["./todo-list.component.css"],
 })
 export class TodoListComponent implements OnInit {
-  todoList: ITodo[];
-  @Input() todo: ITodo;
+  todoList: ITodo[] = [];
+  // @Input() todo: ITodo;
 
   constructor(private todoService: TodoService) {}
 
