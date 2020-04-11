@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ITodo } from "./interfaces/itodo";
+import { TodoService } from "./services/todo.service";
 
 @Component({
   selector: "app-root",
@@ -7,26 +8,7 @@ import { ITodo } from "./interfaces/itodo";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  title = "Todos";
-  todoList: ITodo[] = [];
-  todoTitle: string;
-  todoId: number = 0;
-
   ngOnInit() {}
 
-  addTodo(): void {
-    this.todoList.push({
-      id: this.todoId,
-      title: this.todoTitle,
-      description: "",
-    });
-
-    // resets our todoTitle variable to an empty string
-    this.todoTitle = "";
-    this.todoId++;
-  }
-  deleteTodo(todo: ITodo) {
-    const index = this.todoList.findIndex((todoItem) => todoItem === todo);
-    this.todoList.splice(index, 1);
-  }
+  constructor(private todoService: TodoService) {}
 }
