@@ -1,5 +1,25 @@
 <div class="view">
-  <label>{{ todo.title }}</label>
+  <input type="checkbox" [(ngModel)]="todo.completed" />
+  <label
+    *ngIf="!todo.editing; else editingTodo"
+    class="todo-item-label"
+    [ngClass]="{ completed: todo.completed }"
+    (dblclick)="editTodo(todo)"
+  >
+    {{ todo.title }}
+  </label>
+  <ng-template #editingTodo>
+    <input
+      type="text"
+      class="todo-item-edit"
+      [(ngModel)]="todo.title"
+      (blur)="doneEdit(todo)"
+      (keyup.enter)="doneEdit(todo)"
+      (keyup.esc)="cancelEdit(todo)"
+      autofocus
+    />
+  </ng-template>
+
   <div class="float-right">
     <button
       type="button"

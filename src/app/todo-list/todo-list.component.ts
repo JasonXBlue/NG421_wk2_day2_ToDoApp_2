@@ -9,7 +9,6 @@ import { ITodo } from "../interfaces/itodo";
 })
 export class TodoListComponent implements OnInit {
   todoList: ITodo[] = [];
-  // @Input() todo: ITodo;
 
   constructor(private todoService: TodoService) {}
 

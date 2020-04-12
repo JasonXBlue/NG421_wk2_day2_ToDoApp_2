@@ -8,6 +8,7 @@ import { CreateTodoComponent } from "./create-todo/create-todo.component";
 import { TodoListComponent } from "./todo-list/todo-list.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ConfirmationModalComponent } from "./confirmation-modal/confirmation-modal.component";
+import { AutofocusModule } from "angular-autofocus-fix";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,13 @@ import { ConfirmationModalComponent } from "./confirmation-modal/confirmation-mo
     TodoListComponent,
     ConfirmationModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, NgbModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    NgbModule,
+    AutofocusModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationModalComponent],

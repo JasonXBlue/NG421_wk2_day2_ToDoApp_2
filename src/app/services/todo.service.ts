@@ -9,7 +9,6 @@ export class TodoService {
   todoList: ITodo[] = [];
   todoId = 1;
   todoTitle: string;
-  // todoId: number;
   description: string;
 
   getTodos(): ITodo[] {
@@ -21,6 +20,8 @@ export class TodoService {
       id: this.todoId++,
       title: todoTitle,
       description: "",
+      editing: false,
+      completed: false,
     });
 
     // resets our todoTitle variable to an empty s this.todoTitle = "";

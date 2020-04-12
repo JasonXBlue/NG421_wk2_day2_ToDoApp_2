@@ -10,15 +10,34 @@ import { ConfirmationModalComponent } from "../confirmation-modal/confirmation-m
   styleUrls: ["./todo.component.css"],
 })
 export class TodoComponent implements OnInit {
-  // title = "Todos";
   @Input() todo: ITodo;
+  beforeEditCache: string;
 
   constructor(
     private todoService: TodoService,
     private modalService: NgbModal
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.beforeEditCache = "";
+  }
+
+  editTodo(todo: ITodo): void {
+    this.beforeEditCache = todo.title;
+    todo.editing = true;
+  }
+
+  doneEdit(todo: ITodo): void {
+    if (todo.title.trim().length === 0) {
+      todo.title = this.beforeEditCache;
+    }
+    todo.editing = false;
+  }
+
+  cancelEdit(todo: ITodo): void {
+    todo.title = this.beforeEditCache;
+    todo.editing = false;
+  }
 
   async deleteTodo() {
     const modal = this.modalService.open(ConfirmationModalComponent);
