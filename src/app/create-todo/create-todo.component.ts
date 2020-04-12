@@ -8,7 +8,6 @@ import { TodoService } from "../services/todo.service";
 })
 export class CreateTodoComponent implements OnInit {
   todoTitle;
-  todoId: number = 0;
 
   constructor(private todoService: TodoService) {}
 

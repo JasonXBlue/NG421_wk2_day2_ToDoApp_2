@@ -42,6 +42,7 @@ export class TodoComponent implements OnInit {
   async deleteTodo() {
     const modal = this.modalService.open(ConfirmationModalComponent);
     const comp: ConfirmationModalComponent = modal.componentInstance;
+
     comp.modalInstance = modal;
 
     const result = await modal.result;
