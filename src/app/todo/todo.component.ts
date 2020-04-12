@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { TodoService } from "../services/todo.service";
 import { ITodo } from "../interfaces/itodo";
+import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
+import { ConfirmationModalComponent } from "../confirmation-modal/confirmation-modal.component";
 
 @Component({
   selector: "app-todo",
@@ -11,11 +13,22 @@ export class TodoComponent implements OnInit {
   // title = "Todos";
   @Input() todo: ITodo;
 
-  constructor(private todoService: TodoService) {}
+  constructor(
+    private todoService: TodoService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit() {}
 
-  deleteTodo() {
-    this.todoService.deleteTodo(this.todo);
+  async deleteTodo() {
+    const modal = this.modalService.open(ConfirmationModalComponent);
+    const comp: ConfirmationModalComponent = modal.componentInstance;
+    comp.modalInstance = modal;
+
+    const result = await modal.result;
+
+    if (result === "yes") {
+      this.todoService.deleteTodo(this.todo);
+    }
   }
 }
